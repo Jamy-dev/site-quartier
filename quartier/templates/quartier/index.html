@@ -1,0 +1,260 @@
+{% load static %}<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guédiawaye — Quartier solidaire, quartier de foot</title>
+<meta name="description" content="Guédiawaye, à Dakar : un quartier solidaire et spécial qui vit le foot. Photos, lieux et vie du quartier.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚽</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0b1b4a; --blue:#1b4fd1; --yellow:#f5c518; --green:#1f7a4d;
+  --bg:#fffdf6; --soft:#eef3ff; --text:#1c2340; --muted:#5d6584; --line:#dde4f7;
+  --head:"Bebas Neue","Impact",sans-serif; --body:"Poppins",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--text);line-height:1.65}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+
+/* En-tete */
+.top{position:fixed;inset:0 0 auto 0;z-index:20;background:rgba(11,27,74,.92);backdrop-filter:blur(8px)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:var(--head);font-size:1.7rem;letter-spacing:.06em;color:#fff;text-decoration:none}
+.logo span{color:var(--yellow)}
+.top nav{display:flex;gap:22px}
+.top nav a{color:#dfe6ff;text-decoration:none;font-size:.92rem;font-weight:500;transition:color .2s}
+.top nav a:hover{color:var(--yellow)}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;overflow:hidden;background:var(--navy)}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;transform:scale(1.06);animation:slow 18s ease-in-out infinite alternate}
+@keyframes slow{to{transform:scale(1.15) translateY(-1.5%)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,27,74,.55),rgba(11,27,74,.2) 40%,rgba(11,27,74,.95))}
+.hero .wrap{position:relative;z-index:2;padding-top:90px}
+.kicker{display:inline-block;background:var(--yellow);color:var(--navy);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:99px}
+.hero h1{font-family:var(--head);font-weight:400;font-size:clamp(4rem,16vw,11rem);line-height:.9;letter-spacing:.03em;margin:18px 0 12px}
+.hero h1 em{font-style:normal;color:var(--yellow)}
+.hero p{max-width:560px;font-size:1.1rem;color:#e6ecff}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;padding:13px 26px;border-radius:99px;background:var(--yellow);color:var(--navy);transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-3px);background:#ffd84a}
+.btn.ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.7)}
+.btn.ghost:hover{background:rgba(255,255,255,.14)}
+
+/* Sections */
+section{padding:92px 0}
+.label{font-family:var(--head);color:var(--blue);letter-spacing:.14em;font-size:1.15rem}
+h2{font-family:var(--head);font-weight:400;font-size:clamp(2.4rem,6vw,4rem);line-height:1;color:var(--navy);margin:6px 0 18px}
+.lead{max-width:680px;color:var(--muted);font-size:1.05rem}
+
+.about{background:var(--bg)}
+.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:38px}
+.chip{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px;transition:transform .3s,box-shadow .3s,border-color .3s}
+.chip:hover{transform:translateY(-8px);box-shadow:0 18px 30px -16px rgba(27,79,209,.4);border-color:var(--yellow)}
+.chip b{display:block;font-family:var(--head);font-weight:400;font-size:1.7rem;color:var(--blue);letter-spacing:.04em}
+.chip span{color:var(--muted);font-size:.95rem}
+
+.foot{background:var(--navy);color:#fff}
+.foot h2{color:#fff}
+.foot .label{color:var(--yellow)}
+.foot .lead{color:#c9d3f5}
+.quotes{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 40px}
+.quotes span{font-family:var(--head);letter-spacing:.06em;font-size:1.25rem;border:2px solid var(--yellow);color:var(--yellow);padding:4px 16px;border-radius:99px}
+
+.lieux{background:var(--soft)}
+
+/* Cartes photo animees */
+.grid{display:grid;gap:24px;margin-top:38px}
+.grid.two{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.grid.four{grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.card{--rx:0deg;--ry:0deg;--mx:50%;--my:50%;position:relative;cursor:zoom-in;border-radius:20px;overflow:hidden;background:#000;
+  box-shadow:0 10px 24px -14px rgba(0,0,0,.5);
+  transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition:transform .25s ease,box-shadow .3s ease;will-change:transform}
+.card.hover{transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-8px) scale(1.02);box-shadow:0 28px 40px -18px rgba(0,0,0,.6)}
+.card:not(.hover){transition:transform .5s ease,box-shadow .3s ease}
+.card img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .6s ease}
+.card.wide img{aspect-ratio:4/3}
+.card.hover img{transform:scale(1.1) rotate(-1.5deg)}
+.card::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity .3s;
+  background:radial-gradient(circle at var(--mx) var(--my),rgba(255,255,255,.28),transparent 55%)}
+.card.hover::before{opacity:1}
+.card figcaption{position:absolute;inset:auto 0 0 0;z-index:3;padding:46px 18px 16px;color:#fff;
+  background:linear-gradient(0deg,rgba(0,0,0,.82),transparent)}
+.card figcaption b{display:block;font-family:var(--head);font-weight:400;font-size:1.6rem;letter-spacing:.04em;color:var(--yellow)}
+.card figcaption p{font-size:.88rem;line-height:1.45;color:#eef1ff}
+.card figcaption small{display:block;margin-top:6px;font-size:.72rem;opacity:.7}
+
+/* Apparition */
+.rv{opacity:0;translate:0 26px;transition:opacity .7s ease,translate .7s ease}
+.rv.in{opacity:1;translate:none}
+.card.rv:not(.hover){transition:opacity .7s ease,translate .7s ease,transform .5s ease,box-shadow .3s ease}
+.card.rv.hover{transition:opacity .7s ease,translate .7s ease,transform .25s ease,box-shadow .3s ease}
+
+/* Visionneuse */
+.lb{position:fixed;inset:0;z-index:50;background:rgba(5,10,30,.94);display:none;align-items:center;justify-content:center;padding:20px;cursor:zoom-out}
+.lb.open{display:flex}
+.lb figure{max-width:min(92vw,900px);text-align:center;color:#fff}
+.lb img{max-height:78vh;margin:0 auto;border-radius:14px}
+.lb figcaption{margin-top:12px;font-size:.95rem}
+.lb figcaption small{display:block;opacity:.65;font-size:.78rem}
+.lb button{position:absolute;top:16px;right:20px;background:none;border:0;color:#fff;font-size:2.4rem;cursor:pointer;line-height:1}
+
+footer{background:var(--navy);color:#c9d3f5;padding:46px 0;text-align:center;font-size:.9rem}
+footer .logo{display:inline-block;margin-bottom:10px}
+footer small{display:block;margin-top:10px;opacity:.7}
+
+@media(max-width:640px){.top nav{gap:14px}.top nav a{font-size:.82rem}section{padding:68px 0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;translate:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#haut">GUÉDIA<span>WAYE</span></a>
+    <nav>
+      <a href="#apropos">Le quartier</a>
+      <a href="#foot">Le foot</a>
+      <a href="#lieux">Les lieux</a>
+    </nav>
+  </div>
+</header>
+
+<main id="haut">
+  <div class="hero">
+    <img src="{% static hero.fichier %}" alt="Supporters du Guédiawaye FC dans le stade">
+    <div class="wrap">
+      <span class="kicker">Dakar · Sénégal</span>
+      <h1>GUÉDIA<em>WAYE</em></h1>
+      <p>Un quartier solidaire et spécial, qui vit le foot de tout son cœur.</p>
+      <div class="btns">
+        <a class="btn" href="#lieux">Découvrir le quartier</a>
+        <a class="btn ghost" href="#foot">Vivre le foot</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="about" id="apropos">
+    <div class="wrap">
+      <div class="label rv">LE QUARTIER</div>
+      <h2 class="rv">Guédiawaye, avant tout</h2>
+      <p class="lead rv">Guédiawaye est un quartier de Dakar où l'on se connaît, où l'on s'entraide et où l'on partage les bons comme les mauvais moments. Ici, la mosquée, la place publique, le stade et le BRT font partie du quotidien de chacun.</p>
+      <div class="chips">
+        <div class="chip rv"><b>SOLIDAIRE</b><span>Un esprit d'entraide qui rassemble les habitants.</span></div>
+        <div class="chip rv"><b>SPÉCIAL</b><span>Une identité forte, fière de ses couleurs et de ses habitants.</span></div>
+        <div class="chip rv"><b>PASSIONNÉ</b><span>Le foot se vit dans les tribunes comme dans les rues.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="foot" id="foot">
+    <div class="wrap">
+      <div class="label rv">LE FOOT</div>
+      <h2 class="rv">Guédiawaye FC, la passion du quartier</h2>
+      <p class="lead rv">Le bleu et le jaune du Guédiawaye FC sont partout les jours de match. L'écusson, avec son crabe, porte la date de 1993 et les supporters le brandissent fièrement dans les tribunes.</p>
+      <div class="quotes rv">
+        <span>Guédiawaye avant tout</span>
+        <span>Guédiawaye moy Sénégal</span>
+        <span>Djiwé rek da koy daaw</span>
+      </div>
+      <div class="grid two">
+        {% for p in foot %}
+        <figure class="card wide rv" data-full="{% static p.fichier %}" data-title="{{ p.titre }}" data-credit="{{ p.credit }}" data-text="{{ p.texte }}">
+          <img src="{% static p.fichier %}" alt="{{ p.titre }}" loading="lazy">
+          <figcaption><b>{{ p.titre }}</b><p>{{ p.texte }}</p><small>Photo : {{ p.credit }}</small></figcaption>
+        </figure>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <section class="lieux" id="lieux">
+    <div class="wrap">
+      <div class="label rv">LES LIEUX</div>
+      <h2 class="rv">Ce qui fait la vie du quartier</h2>
+      <p class="lead rv">La grande mosquée, la place publique pour se retrouver et faire du sport, le BRT pour se déplacer : quelques lieux qui rythment les journées à Guédiawaye.</p>
+      <div class="grid four">
+        {% for p in lieux %}
+        <figure class="card rv" data-full="{% static p.fichier %}" data-title="{{ p.titre }}" data-credit="{{ p.credit }}" data-text="{{ p.texte }}">
+          <img src="{% static p.fichier %}" alt="{{ p.titre }}" loading="lazy">
+          <figcaption><b>{{ p.titre }}</b><p>{{ p.texte }}</p><small>Photo : {{ p.credit }}</small></figcaption>
+        </figure>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="logo" href="#haut">GUÉDIA<span>WAYE</span></a>
+    <div>Fier de mon quartier. Dakar, Sénégal.</div>
+    <div>Site réalisé par <b style="color:var(--yellow)">@jamy</b></div>
+    <small>Crédits photos : {{ credits|join:" · " }}</small>
+  </div>
+</footer>
+
+<div class="lb" id="lb" aria-hidden="true">
+  <button type="button" aria-label="Fermer">&times;</button>
+  <figure><img id="lbimg" alt=""><figcaption id="lbcap"></figcaption></figure>
+</div>
+
+<script>
+  //javaScript
+(function(){
+  var fine = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+  var calm = window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+
+  // Animation des photos au passage de la souris
+  document.querySelectorAll(".card").forEach(function(c){
+    if(fine && !calm){
+      c.addEventListener("mouseenter",function(){c.classList.add("hover")});
+      c.addEventListener("mousemove",function(e){
+        var r=c.getBoundingClientRect();
+        var x=(e.clientX-r.left)/r.width, y=(e.clientY-r.top)/r.height;
+        c.style.setProperty("--ry",((x-.5)*12)+"deg");
+        c.style.setProperty("--rx",((.5-y)*10)+"deg");
+        c.style.setProperty("--mx",(x*100)+"%");
+        c.style.setProperty("--my",(y*100)+"%");
+      });
+      c.addEventListener("mouseleave",function(){
+        c.classList.remove("hover");
+        c.style.setProperty("--rx","0deg");c.style.setProperty("--ry","0deg");
+      });
+    }
+    c.addEventListener("click",function(){openLb(c)});
+  });
+
+  // Apparition au defilement
+  var rv=document.querySelectorAll(".rv");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}});
+    },{threshold:.12});
+    rv.forEach(function(el){io.observe(el)});
+  } else { rv.forEach(function(el){el.classList.add("in")}); }
+
+  // Visionneuse
+  var lb=document.getElementById("lb"), img=document.getElementById("lbimg"), cap=document.getElementById("lbcap");
+  function openLb(c){
+    img.src=c.dataset.full; img.alt=c.dataset.title;
+    cap.innerHTML="";
+    var t=document.createElement("b"); t.textContent=c.dataset.title;
+    var s=document.createElement("small"); s.textContent=c.dataset.text+" — Photo : "+c.dataset.credit;
+    cap.appendChild(t); cap.appendChild(s);
+    lb.classList.add("open"); lb.setAttribute("aria-hidden","false");
+  }
+  function closeLb(){lb.classList.remove("open");lb.setAttribute("aria-hidden","true")}
+  lb.addEventListener("click",closeLb);
+  document.addEventListener("keydown",function(e){if(e.key==="Escape")closeLb()});
+})();
+</script>
+</body>
+</html>
